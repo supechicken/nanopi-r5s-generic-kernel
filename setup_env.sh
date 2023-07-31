@@ -34,7 +34,7 @@ sed -i 's/CONFIG_BCMDHD=y/CONFIG_BCMDHD=n/' .config
 sed -i 's/^\(CONFIG_BCMDHD_\)/# \1/g' .config
 
 # change all module to builtin
-sed -i 's/=m$/=y/g' .config
+#sed -i 's/=m$/=y/g' .config
 
 # customize config
 make CROSS_COMPILE=aarch64-linux-gnu- ARCH=arm64 menuconfig

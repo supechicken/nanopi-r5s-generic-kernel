@@ -92,7 +92,11 @@ while (@current_linux_line || @current_android_line)
       #EOT
 
       if @current_linux_line =~ /\=[ym]$/ || @current_android_line =~ /\=[ym]$/
-        final = "#{current_option}=y"
+        if @current_android_line.end_with?('=y') || @current_linux_line.end_with?('=y')
+          final = "#{current_option}=y"
+        else
+          final = "#{current_option}=m"
+        end
       else
         final = @current_android_line
       end
