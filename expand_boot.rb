@@ -8,12 +8,11 @@ partinfo = mtd.split(',').to_h do |part|
 end
 
 origsize = partinfo['boot'][:size].to_i(16)
-newsize  = 100 * 1024 * 2
+newsize  = 100 * 1024 * 2 # 100MB
 
 partinfo['boot'][:size] = format('0x%08x', newsize)
 
 %w[recovery backup cache metadata baseparameter super userdata:grow].each do |partition|
-  p partinfo[partition][:offset].to_i(16) + (newsize - origsize)
   partinfo[partition][:offset] = format('0x%08x', partinfo[partition][:offset].to_i(16) + (newsize - origsize))
 end
 
