@@ -97,7 +97,7 @@ while (@current_linux_line || @current_android_line)
         final = @current_android_line
       end
 
-      warn "#{@current_linux_line} + #{@current_android_line} = #{final}"
+      puts "#{@current_linux_line} + #{@current_android_line} = #{final}"
       #warn <<~EOT
       #  Final: #{final}
       #  ===
@@ -117,13 +117,13 @@ while (@current_linux_line || @current_android_line)
 
         if who_specific == :linux
           # linux specific
-          warn "\e[1;33m""Linux specific option: #{@current_linux_line}, line #{LINUX_CONFIG_IO.lineno}""\e[0m"
+          puts "\e[1;33m""Linux specific option: #{@current_linux_line}, line #{LINUX_CONFIG_IO.lineno}""\e[0m"
           NEW_CONFIG_IO.puts @current_linux_line
 
           @current_linux_line = LINUX_CONFIG_IO.gets(chomp: true)
         else
           # android specific
-          warn "\e[1;33m""Android specific option: #{@current_android_line}, line #{ANDROID_CONFIG_IO.lineno}""\e[0m"
+          puts "\e[1;33m""Android specific option: #{@current_android_line}, line #{ANDROID_CONFIG_IO.lineno}""\e[0m"
           NEW_CONFIG_IO.puts @current_android_line
 
           @current_android_line = ANDROID_CONFIG_IO.gets(chomp: true)
